@@ -44,7 +44,10 @@ import com.example.vijana_xiteb.R
 import com.example.vijana_xiteb.utils.ScreenState
 
 @Composable
-fun LoginScreen(navController: NavController){
+fun LoginScreen(
+    navController: NavController,
+    callbackManager: CallbackManager
+){
     val context = LocalContext.current
 
     val viewModel = hiltViewModel<LoginViewModel>()
@@ -62,12 +65,11 @@ fun LoginScreen(navController: NavController){
         }
     }
 
-    val callbackManager = remember {
-        CallbackManager.Factory.create()
-    }
     val loginButton = remember { LoginButton(context) }
 
-    val fbLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()){result ->
+    val facebookLoginLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
         callbackManager.onActivityResult(result.resultCode, result.resultCode, result.data)
     }
     val loginManager = remember {

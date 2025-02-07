@@ -13,8 +13,10 @@ import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import com.google.firebase.Firebase
+import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import kotlinx.coroutines.CoroutineScope
@@ -62,7 +64,21 @@ class FacebookSignInService @Inject constructor() {
                                     Log.d("FacebookAuth", "Firebase User: ${user?.displayName}")
                                     continuation.resume(user)
 
-                                }else {
+                                } else if (task.exception is FirebaseAuthUserCollisionException) {
+                                    // If the user already exists, link the Facebook credentials to the existing account
+                                    val currentUser = FirebaseAuth.getInstance().currentUser
+                                    currentUser?.linkWithCredential(credentials)
+                                        ?.addOnCompleteListener { linkTask ->
+                                            if (linkTask.isSuccessful) {
+                                                val linkedUser = linkTask.result?.user
+                                                Log.d("FacebookAuth", "Successfully linked with existing account: ${linkedUser?.displayName}")
+                                                continuation.resume(linkedUser)
+                                            } else {
+                                                Log.e("FacebookAuth", "Linking failed", linkTask.exception)
+                                                continuation.resume(null)
+                                            }
+                                        }
+                                } else {
                                     Log.e("FacebookAuth", "Firebase login failed", task.exception)
                                     continuation.resume(null)
                                 }
