@@ -42,6 +42,7 @@ fun HomeScreen(
     val userName = user.userName ?: "Guest"
     val userEmail = user.email ?: "Not Available"
     val profilePicture = user.profilePictureUrl
+    val provider = user.provider
 
     Box(
         modifier = Modifier
@@ -82,6 +83,13 @@ fun HomeScreen(
             Spacer(modifier = Modifier.padding(5.dp))
             Text(
                 text = userEmail,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.padding(5.dp))
+            Text(
+                text = provider,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center

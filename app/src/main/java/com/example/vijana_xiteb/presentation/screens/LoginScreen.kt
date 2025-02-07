@@ -161,7 +161,24 @@ fun LoginScreen(
                             loginManager,
                             context
                         ){user ->
-                            Log.d("user->", user.toString())
+                            Log.d("user->", user.displayName.toString())
+                            val userPreferences = UserPreferences(context)
+                            userPreferences.saveUserData(
+                                userId = user.uid,
+                                userName = user.displayName,
+                                userEmail = user.email,
+                                profilePictureUrl = user.photoUrl.toString(),
+                                provider = "facebook"
+                            )
+                            Toast
+                                .makeText(context, "Logged in", Toast.LENGTH_SHORT)
+                                .show()
+                            Log.d("Logged in", user.displayName ?: "empty")
+                            navController.navigate(Routes.HOME_SCREEN) {
+                                popUpTo(Routes.LOGIN_SCREEN) { inclusive = true }
+                                launchSingleTop = true
+                            }
+
                         }
                     },
                 verticalAlignment = Alignment.CenterVertically,
