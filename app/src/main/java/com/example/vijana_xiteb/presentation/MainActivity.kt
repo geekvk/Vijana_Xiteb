@@ -17,7 +17,12 @@ import androidx.navigation.compose.rememberNavController
 import com.example.vijana_xiteb.presentation.screens.HomeScreen
 import com.example.vijana_xiteb.presentation.screens.LoginScreen
 import com.example.vijana_xiteb.ui.theme.Vijana_XitebTheme
+import com.example.vijana_xiteb.utils.Routes
+import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,12 +30,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             Vijana_XitebTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "/Login"){
-                    composable("/Login"){
-                        LoginScreen()
+                NavHost(navController = navController, startDestination = Routes.LOGIN_SCREEN){
+                    composable(Routes.LOGIN_SCREEN){
+                        LoginScreen(navController = navController)
                     }
-                    composable("/Home") {
-                        HomeScreen()
+                    composable(Routes.HOME_SCREEN) {
+                        HomeScreen(navController)
                     }
                 }
             }

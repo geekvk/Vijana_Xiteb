@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "902793589136",
+    "project_id": "xitebapp",
+    "storage_bucket": "xitebapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902793589136:android:8ce48faa7258738a21c315",
+        "android_client_info": {
+          "package_name": "com.example.vijana_xiteb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902793589136-geivli0k5ujn70gj25us7lm9envc0rbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vijana_xiteb",
+            "certificate_hash": "f2c5b445659aec1a570f7253cb4e83962d7748af"
+          }
+        },
+        {
+          "client_id": "902793589136-4uncv6rpnnl3eqoqub0ehbdprarhsfpq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLGRVHZRb_kYhs68GUJQTP6IgR8IR8-P4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902793589136-4uncv6rpnnl3eqoqub0ehbdprarhsfpq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

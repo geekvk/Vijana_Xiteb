@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
+    alias(libs.plugins.google.services)
+
 }
 
 android {
@@ -69,8 +71,12 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    kapt("androidx.hilt:hilt-compiler:1.1.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
 
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
@@ -84,5 +90,28 @@ dependencies {
 
     val nav_version = "2.8.6"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+
+
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
+    implementation (libs.accompanist.flowlayout)
+    implementation (libs.androidx.activity.compose.v160alpha01)
+    implementation (libs.accompanist.swiperefresh)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+
+
+    implementation (libs.androidx.credentials)
+    implementation( libs.androidx.credentials.play.services.auth)
+    implementation (libs.googleid)
+
+    // Facebook Login only
+    implementation(libs.facebook.login)
+    implementation(libs.firebase.auth.ktx)
+
+    implementation(libs.coil.compose)
+
+
+
 
 }

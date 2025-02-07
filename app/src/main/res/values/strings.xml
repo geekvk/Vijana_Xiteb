@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Vijana_Xiteb</string>
+    <string name="web_client_id">902793589136-qdjcb79662l7p3n2uk0pi5tah7kdijmp.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">1031485205405862</string>
+    <string name="facebook_client_token">bb95340177517a57171ac82f91613c09</string>
 </resources>
